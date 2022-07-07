@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import '../domain/network/_network_import.dart';
-import 'services/_services_import.dart';
+import '../domain/network/_network.dart';
+import 'services/_services.dart';
 
 final container = GetIt.instance;
 

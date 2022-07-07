@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart' show CupertinoPageRoute;
 
-import '../../_core_import.dart';
+import '../../_core.dart';
 
 class AppRouter extends Service {
   AppRouter(GlobalKey<NavigatorState> key) : super(key);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../presentation/styles/app_theme.dart';
+import '../../presentation/styles/app_theme.dart';
 
 class App extends StatelessWidget {
   final GlobalKey<NavigatorState> navigatorKey;

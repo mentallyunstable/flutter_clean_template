@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'config/_import.dart';
+import '_import.dart';
 
 Future<void> main() async {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey();

@@ -1,4 +1,4 @@
-/// Add your own route entries here
+/// Add app navigation route entries here
 enum Routes {
   main,
 }
