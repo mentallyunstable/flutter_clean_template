@@ -5,6 +5,7 @@ ___
 
 Clean architecture template project for new flutter applications.
 ___
+
 [TOCM]
 
 [TOC]
