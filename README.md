@@ -1,14 +1,17 @@
 ___
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Google-flutter-logo.svg/2560px-Google-flutter-logo.svg.png)
+<a href="https://flutter.dev/">
+  <h1 align="center">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://storage.googleapis.com/cms-storage-bucket/6e19fee6b47b36ca613f.png">
+      <img alt="Flutter" src="https://storage.googleapis.com/cms-storage-bucket/c823e53b3a1a7b0d36a9.png">
+    </picture>
+  </h1>
+</a>
 ___
 # clean_template
 
 Clean architecture template project for new flutter applications.
 ___
-
-[TOCM]
-
-[TOC]
 
 ## Implemented app logic
 
