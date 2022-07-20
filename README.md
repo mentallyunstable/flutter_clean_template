@@ -7,7 +7,7 @@ ___
     </picture>
   </h1>
 </a>
-___
+
 # clean_template
 
 Clean architecture template project for new flutter applications.
