@@ -12,10 +12,8 @@ Future<void> main() async {
 
   BlocOverrides.runZoned(
     () => runApp(
-      AppBlocProvider(
-        child: App(
-          navigatorKey: navigatorKey,
-        ),
+      App(
+        navigatorKey: navigatorKey,
       ),
     ),
     blocObserver: AppBlocObserver(),

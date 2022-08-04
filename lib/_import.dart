@@ -15,3 +15,5 @@ export 'presentation/_presentation.dart';
 
 /// Utils
 export 'utils/_utils.dart';
+
+export 'package:auto_route/auto_route.dart';

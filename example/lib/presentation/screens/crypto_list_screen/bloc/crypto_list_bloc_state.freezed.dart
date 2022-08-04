@@ -334,8 +334,6 @@ abstract class _$$LoadedCryptoListBlocStateCopyWith<$Res> {
           $Res Function(_$LoadedCryptoListBlocState) then) =
       __$$LoadedCryptoListBlocStateCopyWithImpl<$Res>;
   $Res call({CryptoData data});
-
-  $CryptoDataCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -360,13 +358,6 @@ class __$$LoadedCryptoListBlocStateCopyWithImpl<$Res>
           : data // ignore: cast_nullable_to_non_nullable
               as CryptoData,
     ));
-  }
-
-  @override
-  $CryptoDataCopyWith<$Res> get data {
-    return $CryptoDataCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value));
-    });
   }
 }
 

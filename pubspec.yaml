@@ -40,13 +40,16 @@ dependencies:
   json_annotation: ^4.5.0
   connectivity_plus: ^2.3.5
   freezed_annotation: ^2.0.3
+  auto_route: ^4.2.1
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  auto_route_generator: ^4.2.0
+  build_runner: ^2.2.0
   flutter_lints: ^2.0.0
-  build_runner: ^2.1.11
   json_serializable: ^6.2.0
   freezed: ^2.0.4
 

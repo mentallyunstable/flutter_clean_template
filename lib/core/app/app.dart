@@ -1,38 +1,30 @@
 import 'package:flutter/material.dart';
-
-import '../../presentation/styles/app_theme.dart';
+import 'package:clean_template/_import.dart';
 
 class App extends StatelessWidget {
   final GlobalKey<NavigatorState> navigatorKey;
+  final _appRouter = AppRouter();
 
-  const App({Key? key, required this.navigatorKey}) : super(key: key);
+  App({Key? key, required this.navigatorKey}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    print("THIS: ${this._appRouter.routeData}");
+    return MaterialApp.router(
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      /// Uncomment this line if your app have dark theme
-      // darkTheme: CustomTheme.darkTheme,
-      navigatorKey: navigatorKey,
-      themeMode: ThemeMode.light,
+      theme: ThemeData.light().copyWith(
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: {
+            TargetPlatform.android: NoShadowCupertinoPageTransitionsBuilder(),
+            TargetPlatform.iOS: NoShadowCupertinoPageTransitionsBuilder(),
+          },
+        ),
+      ),
+
       /// TODO: Type your app name in the title property
       title: 'CLean Template',
-      home: const MainScreen(),
     );
-  }
-}
-
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold();
   }
 }

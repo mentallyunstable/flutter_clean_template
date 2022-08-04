@@ -39,13 +39,11 @@ class DIContainer {
   ///         authStorage: container<AuthStorage>(),
   ///  ),
   /// );
-  static void _registerRepositories(RestClient restClient) {
-
-  }
+  static void _registerRepositories(RestClient restClient) {}
 
   /// Register your custom [Service] instances here
   static void _registerServices(GlobalKey<NavigatorState> key) {
-    container.registerLazySingleton(() => AppRouter(key));
+    container.registerLazySingleton(() => AppRouter());
     // container.registerLazySingleton(() => DialogService(key));
     container.registerLazySingleton(() => ModalBottomSheetService(key));
   }
