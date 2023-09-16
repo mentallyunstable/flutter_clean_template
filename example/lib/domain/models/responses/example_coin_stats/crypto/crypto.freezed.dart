@@ -26,7 +26,7 @@ mixin _$Crypto {
   String get symbol => throw _privateConstructorUsedError;
   int get rank => throw _privateConstructorUsedError;
   double get price => throw _privateConstructorUsedError;
-  double? get priceBitcoin => throw _privateConstructorUsedError;
+  double get priceBitcoin => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +44,7 @@ abstract class $CryptoCopyWith<$Res> {
       String symbol,
       int rank,
       double price,
-      double? priceBitcoin});
+      double priceBitcoin});
 }
 
 /// @nodoc
@@ -93,7 +93,7 @@ class _$CryptoCopyWithImpl<$Res> implements $CryptoCopyWith<$Res> {
       priceBitcoin: priceBitcoin == freezed
           ? _value.priceBitcoin
           : priceBitcoin // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
     ));
   }
 }
@@ -110,7 +110,7 @@ abstract class _$$_CryptoCopyWith<$Res> implements $CryptoCopyWith<$Res> {
       String symbol,
       int rank,
       double price,
-      double? priceBitcoin});
+      double priceBitcoin});
 }
 
 /// @nodoc
@@ -160,7 +160,7 @@ class __$$_CryptoCopyWithImpl<$Res> extends _$CryptoCopyWithImpl<$Res>
       priceBitcoin: priceBitcoin == freezed
           ? _value.priceBitcoin
           : priceBitcoin // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
     ));
   }
 }
@@ -193,7 +193,7 @@ class _$_Crypto implements _Crypto {
   @override
   final double price;
   @override
-  final double? priceBitcoin;
+  final double priceBitcoin;
 
   @override
   String toString() {
@@ -248,7 +248,7 @@ abstract class _Crypto implements Crypto {
       required final String symbol,
       required final int rank,
       required final double price,
-      required final double? priceBitcoin}) = _$_Crypto;
+      required final double priceBitcoin}) = _$_Crypto;
 
   factory _Crypto.fromJson(Map<String, dynamic> json) = _$_Crypto.fromJson;
 
@@ -265,7 +265,7 @@ abstract class _Crypto implements Crypto {
   @override
   double get price;
   @override
-  double? get priceBitcoin;
+  double get priceBitcoin;
   @override
   @JsonKey(ignore: true)
   _$$_CryptoCopyWith<_$_Crypto> get copyWith =>

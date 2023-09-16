@@ -3,4 +3,4 @@
 /// export 'user/user.dart';
 export 'requests/_requests.dart';
 export 'responses/_responses.dart';
-export 'result.dart';
+export '../../data/models/network/result.dart';

@@ -1,10 +1,8 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:example/utils/log/debug_logger.dart';
 
-import '../models/_models.dart';
-import '_network.dart';
+import 'package:example/_import.dart';
 
 /// Rest API client that handles all app requests.
 class RestClient {
@@ -25,7 +23,7 @@ class RestClient {
   /// to any error.
   ///
   /// If device has no internet connection, returns
-  /// [ErrorResult] with [NoConnectionException].
+  /// [ErrorResult] with [NoConnectionError].
   Future<Result<T>> get<T>(
     String path,
     T Function(Map<String, dynamic> json) fromJson, {
@@ -35,7 +33,7 @@ class RestClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     if (await Connection.isNotConnected) {
-      return const Result.error(error: NoConnectionException());
+      return const Result.error(error: NetworkError.connection());
     }
 
     try {
@@ -48,9 +46,14 @@ class RestClient {
       );
 
       return Result.success(data: _decode(response, fromJson));
-    } catch (exception, stackTrace) {
-      DebugLogger.logException(exception, stackTrace);
-      return Result.error(error: exception as Exception);
+    } on TypeError catch (typeError, stackTrace) {
+      DebugLogger.logNetworkError('TypeError', typeError, stackTrace);
+
+      return const Result.error(error: NetworkError.type());
+    } on DioError catch (dioError, stackTrace) {
+      DebugLogger.logNetworkError('DioError', dioError, stackTrace);
+
+      return Result.error(error: NetworkError.dio(error: dioError));
     }
   }
 
@@ -69,7 +72,7 @@ class RestClient {
   /// to any error.
   ///
   /// If device has no internet connection, returns
-  /// [ErrorResult] with [NoConnectionException].
+  /// [ErrorResult] with [NoConnectionError].
   Future<Result<T>> post<T>(
     String path,
     T Function(Map<String, dynamic> json) fromJson, {
@@ -81,7 +84,7 @@ class RestClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     if (await Connection.isNotConnected) {
-      return const Result.error(error: NoConnectionException());
+      return const Result.error(error: NetworkError.connection());
     }
 
     try {
@@ -96,8 +99,14 @@ class RestClient {
       );
 
       return Result.success(data: _decode(response, fromJson));
-    } catch (exception) {
-      return Result.error(error: exception as Exception);
+    } on TypeError catch (typeError, stackTrace) {
+      DebugLogger.logException(typeError, stackTrace);
+
+      return const Result.error(error: NetworkError.type());
+    } on DioError catch (dioError, stackTrace) {
+      DebugLogger.logException(dioError, stackTrace);
+
+      return Result.error(error: NetworkError.dio(error: dioError));
     }
   }
 
@@ -116,7 +125,7 @@ class RestClient {
   /// to any error.
   ///
   /// If device has no internet connection, returns
-  /// [ErrorResult] with [NoConnectionException].
+  /// [ErrorResult] with [NoConnectionError].
   Future<Result<T>> put<T>(
     String path,
     T Function(Map<String, dynamic> json) fromJson, {
@@ -128,7 +137,7 @@ class RestClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     if (await Connection.isNotConnected) {
-      return const Result.error(error: NoConnectionException());
+      return const Result.error(error: NetworkError.connection());
     }
 
     try {
@@ -143,8 +152,14 @@ class RestClient {
       );
 
       return Result.success(data: _decode(response, fromJson));
-    } catch (exception) {
-      return Result.error(error: exception as Exception);
+    } on TypeError catch (typeError, stackTrace) {
+      DebugLogger.logException(typeError, stackTrace);
+
+      return const Result.error(error: NetworkError.type());
+    } on DioError catch (dioError, stackTrace) {
+      DebugLogger.logException(dioError, stackTrace);
+
+      return Result.error(error: NetworkError.dio(error: dioError));
     }
   }
 
@@ -163,7 +178,7 @@ class RestClient {
   /// to any error.
   ///
   /// If device has no internet connection, returns
-  /// [ErrorResult] with [NoConnectionException].
+  /// [ErrorResult] with [NoConnectionError].
   Future<Result<T>> patch<T>(
     String path,
     T Function(Map<String, dynamic> json) fromJson, {
@@ -175,7 +190,7 @@ class RestClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     if (await Connection.isNotConnected) {
-      return const Result.error(error: NoConnectionException());
+      return const Result.error(error: NetworkError.connection());
     }
 
     try {
@@ -190,8 +205,14 @@ class RestClient {
       );
 
       return Result.success(data: _decode(response, fromJson));
-    } catch (exception) {
-      return Result.error(error: exception as Exception);
+    } on TypeError catch (typeError, stackTrace) {
+      DebugLogger.logException(typeError, stackTrace);
+
+      return const Result.error(error: NetworkError.type());
+    } on DioError catch (dioError, stackTrace) {
+      DebugLogger.logException(dioError, stackTrace);
+
+      return Result.error(error: NetworkError.dio(error: dioError));
     }
   }
 
@@ -210,7 +231,7 @@ class RestClient {
   /// to any error.
   ///
   /// If device has no internet connection, returns
-  /// [ErrorResult] with [NoConnectionException].
+  /// [ErrorResult] with [NoConnectionError].
   Future<Result<T>> delete<T>(
     String path,
     T Function(Map<String, dynamic> json) fromJson, {
@@ -220,7 +241,7 @@ class RestClient {
     CancelToken? cancelToken,
   }) async {
     if (await Connection.isNotConnected) {
-      return const Result.error(error: NoConnectionException());
+      return const Result.error(error: NetworkError.connection());
     }
 
     try {
@@ -233,8 +254,14 @@ class RestClient {
       );
 
       return Result.success(data: _decode(response, fromJson));
-    } catch (exception) {
-      return Result.error(error: exception as Exception);
+    } on TypeError catch (typeError, stackTrace) {
+      DebugLogger.logNetworkError('TypeError', typeError, stackTrace);
+
+      return const Result.error(error: NetworkError.type());
+    } on DioError catch (dioError, stackTrace) {
+      DebugLogger.logNetworkError('DioError', dioError, stackTrace);
+
+      return Result.error(error: NetworkError.dio(error: dioError));
     }
   }
 

@@ -7,3 +7,5 @@ class Connection {
   static Future<bool> get isNotConnected async =>
       await Connectivity().checkConnectivity() == ConnectivityResult.none;
 }
+
+class NoConnectionError extends Error {}

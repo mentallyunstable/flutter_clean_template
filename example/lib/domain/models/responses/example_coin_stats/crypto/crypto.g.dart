@@ -13,7 +13,7 @@ _$_Crypto _$$_CryptoFromJson(Map<String, dynamic> json) => _$_Crypto(
       symbol: json['symbol'] as String,
       rank: json['rank'] as int,
       price: (json['price'] as num).toDouble(),
-      priceBitcoin: (json['priceBitcoin'] as num?)?.toDouble(),
+      priceBitcoin: (json['priceBitcoin'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$_CryptoToJson(_$_Crypto instance) => <String, dynamic>{

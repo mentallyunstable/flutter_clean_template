@@ -21,7 +21,7 @@ mixin _$CryptoListBlocState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(CryptoData data) loaded,
-    required TResult Function() error,
+    required TResult Function(NetworkError error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$CryptoListBlocState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CryptoData data)? loaded,
-    TResult Function()? error,
+    TResult Function(NetworkError error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$CryptoListBlocState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CryptoData data)? loaded,
-    TResult Function()? error,
+    TResult Function(NetworkError error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,7 +133,7 @@ class _$InitialCryptoListBlocState implements InitialCryptoListBlocState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(CryptoData data) loaded,
-    required TResult Function() error,
+    required TResult Function(NetworkError error) error,
   }) {
     return initial();
   }
@@ -144,7 +144,7 @@ class _$InitialCryptoListBlocState implements InitialCryptoListBlocState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CryptoData data)? loaded,
-    TResult Function()? error,
+    TResult Function(NetworkError error)? error,
   }) {
     return initial?.call();
   }
@@ -155,7 +155,7 @@ class _$InitialCryptoListBlocState implements InitialCryptoListBlocState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CryptoData data)? loaded,
-    TResult Function()? error,
+    TResult Function(NetworkError error)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -254,7 +254,7 @@ class _$LoadingCryptoListBlocState implements LoadingCryptoListBlocState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(CryptoData data) loaded,
-    required TResult Function() error,
+    required TResult Function(NetworkError error) error,
   }) {
     return loading();
   }
@@ -265,7 +265,7 @@ class _$LoadingCryptoListBlocState implements LoadingCryptoListBlocState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CryptoData data)? loaded,
-    TResult Function()? error,
+    TResult Function(NetworkError error)? error,
   }) {
     return loading?.call();
   }
@@ -276,7 +276,7 @@ class _$LoadingCryptoListBlocState implements LoadingCryptoListBlocState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CryptoData data)? loaded,
-    TResult Function()? error,
+    TResult Function(NetworkError error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -407,7 +407,7 @@ class _$LoadedCryptoListBlocState implements LoadedCryptoListBlocState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(CryptoData data) loaded,
-    required TResult Function() error,
+    required TResult Function(NetworkError error) error,
   }) {
     return loaded(data);
   }
@@ -418,7 +418,7 @@ class _$LoadedCryptoListBlocState implements LoadedCryptoListBlocState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CryptoData data)? loaded,
-    TResult Function()? error,
+    TResult Function(NetworkError error)? error,
   }) {
     return loaded?.call(data);
   }
@@ -429,7 +429,7 @@ class _$LoadedCryptoListBlocState implements LoadedCryptoListBlocState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CryptoData data)? loaded,
-    TResult Function()? error,
+    TResult Function(NetworkError error)? error,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -491,6 +491,9 @@ abstract class _$$ErrorCryptoListBlocStateCopyWith<$Res> {
   factory _$$ErrorCryptoListBlocStateCopyWith(_$ErrorCryptoListBlocState value,
           $Res Function(_$ErrorCryptoListBlocState) then) =
       __$$ErrorCryptoListBlocStateCopyWithImpl<$Res>;
+  $Res call({NetworkError error});
+
+  $NetworkErrorCopyWith<$Res> get error;
 }
 
 /// @nodoc
@@ -504,27 +507,58 @@ class __$$ErrorCryptoListBlocStateCopyWithImpl<$Res>
   @override
   _$ErrorCryptoListBlocState get _value =>
       super._value as _$ErrorCryptoListBlocState;
+
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_$ErrorCryptoListBlocState(
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as NetworkError,
+    ));
+  }
+
+  @override
+  $NetworkErrorCopyWith<$Res> get error {
+    return $NetworkErrorCopyWith<$Res>(_value.error, (value) {
+      return _then(_value.copyWith(error: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$ErrorCryptoListBlocState implements ErrorCryptoListBlocState {
-  const _$ErrorCryptoListBlocState();
+  const _$ErrorCryptoListBlocState({required this.error});
+
+  @override
+  final NetworkError error;
 
   @override
   String toString() {
-    return 'CryptoListBlocState.error()';
+    return 'CryptoListBlocState.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorCryptoListBlocState);
+            other is _$ErrorCryptoListBlocState &&
+            const DeepCollectionEquality().equals(other.error, error));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$ErrorCryptoListBlocStateCopyWith<_$ErrorCryptoListBlocState>
+      get copyWith =>
+          __$$ErrorCryptoListBlocStateCopyWithImpl<_$ErrorCryptoListBlocState>(
+              this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -532,9 +566,9 @@ class _$ErrorCryptoListBlocState implements ErrorCryptoListBlocState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(CryptoData data) loaded,
-    required TResult Function() error,
+    required TResult Function(NetworkError error) error,
   }) {
-    return error();
+    return error(this.error);
   }
 
   @override
@@ -543,9 +577,9 @@ class _$ErrorCryptoListBlocState implements ErrorCryptoListBlocState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CryptoData data)? loaded,
-    TResult Function()? error,
+    TResult Function(NetworkError error)? error,
   }) {
-    return error?.call();
+    return error?.call(this.error);
   }
 
   @override
@@ -554,11 +588,11 @@ class _$ErrorCryptoListBlocState implements ErrorCryptoListBlocState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(CryptoData data)? loaded,
-    TResult Function()? error,
+    TResult Function(NetworkError error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(this.error);
     }
     return orElse();
   }
@@ -602,5 +636,11 @@ class _$ErrorCryptoListBlocState implements ErrorCryptoListBlocState {
 }
 
 abstract class ErrorCryptoListBlocState implements CryptoListBlocState {
-  const factory ErrorCryptoListBlocState() = _$ErrorCryptoListBlocState;
+  const factory ErrorCryptoListBlocState({required final NetworkError error}) =
+      _$ErrorCryptoListBlocState;
+
+  NetworkError get error;
+  @JsonKey(ignore: true)
+  _$$ErrorCryptoListBlocStateCopyWith<_$ErrorCryptoListBlocState>
+      get copyWith => throw _privateConstructorUsedError;
 }

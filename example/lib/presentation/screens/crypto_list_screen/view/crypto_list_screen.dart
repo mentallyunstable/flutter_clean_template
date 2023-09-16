@@ -13,19 +13,26 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<CryptoListBloc, CryptoListBlocState>(
-        builder: (context, state) => state.maybeWhen(
-          loading: () => const Center(
-            child: CircularProgressIndicator(),
-          ),
-          loaded: (CryptoData data) => ListView.builder(
-            itemCount: data.coins.length,
-            itemBuilder: (context, index) => Text(
-              data.coins[index].name,
+      appBar: AppBar(
+        title: const Text('Crypto Currencies'),
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async => context
+            .read<CryptoListBloc>()
+            .add(const CryptoListBlocEvent.load()),
+        child: BlocBuilder<CryptoListBloc, CryptoListBlocState>(
+          builder: (context, state) => state.maybeWhen(
+            loading: () => const AppLoadingIndicator(),
+            loaded: (CryptoData data) => ListView.builder(
+              itemCount: data.coins.length,
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+              itemBuilder: (context, index) => CryptoListItem(
+                crypto: data.coins[index],
+              ),
             ),
-            padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+            error: (error) => const AppErrorIcon(),
+            orElse: () => Container(),
           ),
-          orElse: () => Container(),
         ),
       ),
     );

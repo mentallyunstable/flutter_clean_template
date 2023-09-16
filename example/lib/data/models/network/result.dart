@@ -1,3 +1,4 @@
+import 'package:example/_import.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'result.freezed.dart';
@@ -13,5 +14,5 @@ part 'result.freezed.dart';
 class Result<T> with _$Result<T> {
   const factory Result.success({required T data}) = SuccessfulResult;
 
-  const factory Result.error({required Exception error}) = ErrorResult;
+  const factory Result.error({required NetworkError error}) = ErrorResult;
 }

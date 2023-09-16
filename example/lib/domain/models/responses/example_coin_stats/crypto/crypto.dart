@@ -12,7 +12,7 @@ class Crypto with _$Crypto {
     required String symbol,
     required int rank,
     required double price,
-    required double? priceBitcoin,
+    required double priceBitcoin,
   }) = _Crypto;
 
   factory Crypto.fromJson(Map<String, dynamic> json) => _$CryptoFromJson(json);

@@ -19,8 +19,8 @@ class CryptoListBloc extends Bloc<CryptoListBlocEvent, CryptoListBlocState> {
 
       if (result is SuccessfulResult) {
         emit(CryptoListBlocState.loaded((result as SuccessfulResult).data));
-      } else {
-        emit(const CryptoListBlocState.error());
+      } else if (result is ErrorResult) {
+        emit(CryptoListBlocState.error(error: (result as ErrorResult).error));
       }
     } catch (exception, stackTrace) {
       DebugLogger.logException(exception, stackTrace);
